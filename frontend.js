@@ -1,10 +1,12 @@
 
 
 async function sortQuery() {
-    const vals = document.getElementById("inputBox").value.split(",").map(Number);
+    const vals = document.getElementById("dataInput").value.split(",").map(Number);
     console.log(vals);
 
-    const response = await fetch("http://192.168.1.175:1234/sort", {
+    const ip = document.getElementById("ipInput").value;
+
+    const response = await fetch(`${ip}/sort`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -12,7 +14,8 @@ async function sortQuery() {
         body: vals
     });
 
+    console.log(response);
+
     const data = await response.json();  
     document.getElementById("sortedList").innerText = data.sorted_vals.join(", "); 
-
 }
