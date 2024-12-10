@@ -14,8 +14,6 @@ async function sortQuery() {
         body: vals
     });
 
-    console.log(response);
-
     const data = await response.json();  
     document.getElementById("sortedList").innerText = data.sorted_vals.join(", "); 
 }
